@@ -88,10 +88,12 @@
     static NSString *CellIdentifier = @"SearchHeader";
     SearchCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     headerView.searchTextField.delegate = self;
+    UIView *wrapper = [[UIView alloc] initWithFrame:[headerView frame]];
+    [wrapper addSubview:headerView];
     if (headerView == nil){
         [NSException raise:@"headerView == nil.." format:@"The cell is nil"];
     }
-    return headerView;
+    return wrapper;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 44.0f;
